@@ -1,15 +1,15 @@
-x = [      %Entradas
-     1  1;
-     1 -1;
+x = [      %Entradas de entrenamiento
+    -1 -1;
     -1  1;
-    -1 -1; 
+     1 -1;
+     1  1; 
      ];
 
- y = [     %Salida
-        1  
+ y = [     %Salida de entrenamiento
+       -1  
        -1
        -1
-       -1
+        1
  ];
 [l,m] = size(x); % l: numero de filas  
                  % n: numero de columnas 
@@ -19,6 +19,8 @@ theta  = 1;
 beta   = 1;
 answer = 0;
 
+
+%%%% Algoritmo de entrenamineto del perceptron %%%%
 for i = 1:l
  
  %Calcular entrada ponderada   
@@ -42,9 +44,30 @@ for i = 1:l
  
  %calcular nuevo vector ponderaciones
   for j = 1:m
-    w(j) = w(j) + (beta * theta * x(i, j));
- end
- 
+    w(j) = w(j) + (beta * answer * x(i, j));
+  end
  I = 0;
 end
+
+%%Se muestra el vector de ponderaciones entrenado
+display(w);
+
+r = round( -1 + (1+1)*rand(4,2) );
+s = round( -1 + (1+1)*rand(4,1) );
+
+for i = 1:l
+ %Calcular entrada ponderada   
+ for j = 1:m
+    I = I + ( w(j) * x(i,j) ); 
+ end
+
+  %Calcular la respuesta
+ if I >= theta
+  text = strct();   
+  display('patron reconocido en');
+  display(i);
+ end
+  I = 0;
+end
+ 
 
