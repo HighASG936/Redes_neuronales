@@ -59,13 +59,15 @@ r = round( -1 + (1+1)*rand(20,3) );
 
 [o,p] = size(r); % o: numero de filas  
                  % p: numero de columnas 
-                 p = p-1;
+                 
+%Ajuste para mostrar la entrada y la salida en la misma tabla
+p = p-1;
 
 for i = 1:o
  %Calcular entrada ponderada 
  for j = 1:p
  
- %Ajuste para valores 0 en los dataos generados aleatoriamente
+ %Ajuste para datos con valores 0 en los dataos generados aleatoriamente
  if r(i,j) == 0   
   r(i,j) = -1;   
  end
